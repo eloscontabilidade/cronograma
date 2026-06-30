@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- saved from url=(0150)file:///C:/Users/stefany.dias/OneDrive%20-%20Inpasa%20Agroindustrial%20SA/Documentos/CRONOGRAMA%20DE%20FECHAMENTO/Dados/dashboard_fechamento_2026.html -->
-<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard de Fechamento Mensal</title>
-<script src="./Dashboard de Fechamento Mensal_files/xlsx.full.min.js.baixados"></script>
-<script src="./Dashboard de Fechamento Mensal_files/chart.umd.min.js.baixados"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f4f0;color:#0b0b0b;min-height:100vh}
@@ -99,9 +99,9 @@ footer{text-align:center;font-size:11px;color:#b4b2a9;margin-top:2rem;padding-to
 <div class="header">
   <div class="header-left">
     <h1>Fechamento Mensal</h1>
-    <span class="month-badge" id="monthBadge">Junho / 2026</span>
+    <span class="month-badge" id="monthBadge">Aguardando arquivo</span>
   </div>
-  <span class="today-badge" id="todayBadge">Hoje: 30/06/2026</span>
+  <span class="today-badge" id="todayBadge"></span>
 </div>
 
 <div class="upload-bar">
@@ -109,78 +109,27 @@ footer{text-align:center;font-size:11px;color:#b4b2a9;margin-top:2rem;padding-to
   <span>Carregar / Atualizar cronograma:</span>
   <label class="upload-btn" for="xlsxUpload">📂 Selecionar arquivo .xlsx</label>
   <input type="file" id="xlsxUpload" accept=".xlsx,.xls" style="display:none">
-  <span class="upload-status" id="uploadStatus">✓ 75 processos carregados de "Cronograma de fechamento 06.2026.xlsx"</span>
+  <span class="upload-status" id="uploadStatus"></span>
 </div>
 
-<div id="dashboard" style="display: block;">
-  <div class="kpi-row" id="kpiRow">
-    <div class="kpi neutral"><div class="val">75</div><div class="lbl">Processos</div></div>
-    <div class="kpi danger"><div class="val">0</div><div class="lbl">Entregas em atraso</div></div>
-    <div class="kpi warning"><div class="val">711</div><div class="lbl">Não iniciados</div></div>
-    <div class="kpi warning"><div class="val">0</div><div class="lbl">Em andamento</div></div>
-    <div class="kpi ok"><div class="val">0%</div><div class="lbl">Concluído geral</div></div>
-  </div>
+<div id="dashboard" style="display:none">
+  <div class="kpi-row" id="kpiRow"></div>
 
   <div class="chart-row">
     <div class="chart-card">
       <h3>Status geral das entregas</h3>
       <div class="chart-canvas-wrap">
-        <canvas id="statusDonut" height="200" style="display: block; box-sizing: border-box; height: 200px; width: 200px;" width="200"></canvas>
+        <canvas id="statusDonut"></canvas>
         <div class="chart-center-label">
           <div class="big" id="donutPct">0%</div>
           <div class="small">concluído</div>
         </div>
       </div>
-      <div class="chart-legend" id="donutLegend">
-    <div class="chart-legend-item"><div class="left"><span class="dot2" style="background:#e24b4a"></span>Em atraso</div><span class="count">0</span></div>
-    <div class="chart-legend-item"><div class="left"><span class="dot2" style="background:#f09595"></span>Não iniciado</div><span class="count">711</span></div>
-    <div class="chart-legend-item"><div class="left"><span class="dot2" style="background:#eda100"></span>Em andamento</div><span class="count">0</span></div>
-    <div class="chart-legend-item"><div class="left"><span class="dot2" style="background:#639922"></span>Concluído</div><span class="count">0</span></div>
-  </div>
+      <div class="chart-legend" id="donutLegend"></div>
     </div>
     <div class="areas-chart-card">
       <h3>Pendências por área (não iniciado + em atraso)</h3>
-      <div id="barChart"><div class="bar-row">
-      <div class="bar-label" title="Contabilidade">Contabilidade</div>
-      <div class="bar-track"><div class="seg" style="width:0.0%;background:#e24b4a"></div><div class="seg" style="width:100.0%;background:#f09595"></div></div>
-      <div class="bar-count">260 pend.</div>
-    </div><div class="bar-row">
-      <div class="bar-label" title="Fiscal">Fiscal</div>
-      <div class="bar-track"><div class="seg" style="width:0.0%;background:#e24b4a"></div><div class="seg" style="width:50.0%;background:#f09595"></div></div>
-      <div class="bar-count">130 pend.</div>
-    </div><div class="bar-row">
-      <div class="bar-label" title="Financeiro">Financeiro</div>
-      <div class="bar-track"><div class="seg" style="width:0.0%;background:#e24b4a"></div><div class="seg" style="width:34.6%;background:#f09595"></div></div>
-      <div class="bar-count">90 pend.</div>
-    </div><div class="bar-row">
-      <div class="bar-label" title="Comercial MTP">Comercial MTP</div>
-      <div class="bar-track"><div class="seg" style="width:0.0%;background:#e24b4a"></div><div class="seg" style="width:21.9%;background:#f09595"></div></div>
-      <div class="bar-count">57 pend.</div>
-    </div><div class="bar-row">
-      <div class="bar-label" title="Faturamento">Faturamento</div>
-      <div class="bar-track"><div class="seg" style="width:0.0%;background:#e24b4a"></div><div class="seg" style="width:17.7%;background:#f09595"></div></div>
-      <div class="bar-count">46 pend.</div>
-    </div><div class="bar-row">
-      <div class="bar-label" title="Juridico">Juridico</div>
-      <div class="bar-track"><div class="seg" style="width:0.0%;background:#e24b4a"></div><div class="seg" style="width:7.7%;background:#f09595"></div></div>
-      <div class="bar-count">20 pend.</div>
-    </div><div class="bar-row">
-      <div class="bar-label" title="Gestão Energia">Gestão Energia</div>
-      <div class="bar-track"><div class="seg" style="width:0.0%;background:#e24b4a"></div><div class="seg" style="width:7.7%;background:#f09595"></div></div>
-      <div class="bar-count">20 pend.</div>
-    </div><div class="bar-row">
-      <div class="bar-label" title="Almoxarifado">Almoxarifado</div>
-      <div class="bar-track"><div class="seg" style="width:0.0%;background:#e24b4a"></div><div class="seg" style="width:6.9%;background:#f09595"></div></div>
-      <div class="bar-count">18 pend.</div>
-    </div><div class="bar-row">
-      <div class="bar-label" title="Indicadores">Indicadores</div>
-      <div class="bar-track"><div class="seg" style="width:0.0%;background:#e24b4a"></div><div class="seg" style="width:6.5%;background:#f09595"></div></div>
-      <div class="bar-count">17 pend.</div>
-    </div><div class="bar-row">
-      <div class="bar-label" title="RH">RH</div>
-      <div class="bar-track"><div class="seg" style="width:0.0%;background:#e24b4a"></div><div class="seg" style="width:3.8%;background:#f09595"></div></div>
-      <div class="bar-count">10 pend.</div>
-    </div></div>
+      <div id="barChart"></div>
     </div>
   </div>
 
@@ -194,9 +143,9 @@ footer{text-align:center;font-size:11px;color:#b4b2a9;margin-top:2rem;padding-to
 
   <div class="filters">
     <label>Área:</label>
-    <select id="fArea"><option value="">Todas as áreas</option><option value="Almoxarifado">Almoxarifado</option><option value="Automotivo">Automotivo</option><option value="Comercial MTP">Comercial MTP</option><option value="Contabilidade">Contabilidade</option><option value="Crédito e Cobrança">Crédito e Cobrança</option><option value="Custos">Custos</option><option value="Faturamento">Faturamento</option><option value="Financeiro">Financeiro</option><option value="Fiscal">Fiscal</option><option value="Gestão Energia">Gestão Energia</option><option value="Indicadores">Indicadores</option><option value="Juridico">Juridico</option><option value="Manutenção">Manutenção</option><option value="Processos Industriais">Processos Industriais</option><option value="RH">RH</option></select>
+    <select id="fArea"><option value="">Todas as áreas</option></select>
     <label>Prazo:</label>
-    <select id="fPrazo"><option value="">Todos os prazos</option><option value="último dia útil">último dia útil</option><option value="1° dia útil">1° dia útil</option><option value="Todo dia 1">Todo dia 1</option><option value="2° dia útil">2° dia útil</option><option value="3° dia útil">3° dia útil</option><option value="4° dia útil">4° dia útil</option><option value="4º dia útil">4º dia útil</option><option value="5° dia útil">5° dia útil</option><option value="6° dia útil">6° dia útil</option></select>
+    <select id="fPrazo"><option value="">Todos os prazos</option></select>
     <label>Status:</label>
     <select id="fStatus">
       <option value="">Todos</option>
@@ -210,1030 +159,30 @@ footer{text-align:center;font-size:11px;color:#b4b2a9;margin-top:2rem;padding-to
   </div>
 
   <div class="tab-row">
-    <div class="tab active" onclick="switchTab(&#39;processos&#39;)">Por processo</div>
-    <div class="tab" onclick="switchTab(&#39;areas&#39;)">Por área</div>
-    <div class="tab" onclick="switchTab(&#39;unidades&#39;)">Por unidade</div>
+    <div class="tab active" onclick="switchTab('processos')">Por processo</div>
+    <div class="tab" onclick="switchTab('areas')">Por área</div>
+    <div class="tab" onclick="switchTab('unidades')">Por unidade</div>
   </div>
 
   <div id="tab-processos" class="section active">
     <div class="scroll-wrap">
       <table class="grid-table">
-        <thead id="tblHead"><tr><th>#</th><th>Processo / Gestor</th><th>Área</th><th>Prazo base</th><th>Deadline</th><th>Sinop/MT</th><th>Dourados/MS</th><th>Nova Mutum/MT</th><th>Fueling 1-1-4</th><th>São Paulo/SP</th><th>Sidrolândia/MS</th><th>Balsas/MA</th><th>Luís Eduardo/BA</th><th>Rio Verde/GO</th><th>Rondonópolis/MT</th></tr></thead>
-        <tbody id="tblBody"><tr>
-      <td style="color:#888780;font-size:11px">1</td>
-      <td><span class="processo-nome" title="Não contadas/finalizadas">Não contadas/finalizadas</span><span class="gestor-nome">Eduardo Boldarini</span></td>
-      <td><span class="prazo-badge">Fiscal</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">último dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">30/06/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">2</td>
-      <td><span class="processo-nome" title="Escrituração materiais">Escrituração materiais</span><span class="gestor-nome">Eduardo Boldarini</span></td>
-      <td><span class="prazo-badge">Fiscal</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">último dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">30/06/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">3</td>
-      <td><span class="processo-nome" title="Escrituração NF de serviços">Escrituração NF de serviços</span><span class="gestor-nome">Eduardo Boldarini</span></td>
-      <td><span class="prazo-badge">Fiscal</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">último dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">30/06/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">4</td>
-      <td><span class="processo-nome" title="Folha de pagamento">Folha de pagamento</span><span class="gestor-nome">Patricia Martone</span></td>
-      <td><span class="prazo-badge">RH</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">1° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">5</td>
-      <td><span class="processo-nome" title="O.S. e consumos lançadas e fechadas - Industria">O.S. e consumos lançadas e fechadas - Industria</span><span class="gestor-nome">Alexandre de Oliveira</span></td>
-      <td><span class="prazo-badge">Manutenção</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">1° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">6</td>
-      <td><span class="processo-nome" title="Boletim de Produção">Boletim de Produção</span><span class="gestor-nome">Natiela Nicolodi</span></td>
-      <td><span class="prazo-badge">Indicadores</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">1° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill na">— N/A</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">7</td>
-      <td><span class="processo-nome" title="O.S. e consumos fechadas e relatório de abastecimento/fechamento da bomba">O.S. e consumos fechadas e relatório de abaste…</span><span class="gestor-nome">Danillo Farias</span></td>
-      <td><span class="prazo-badge">Automotivo</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">1° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill na">— N/A</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">8</td>
-      <td><span class="processo-nome" title="Requisição Baixadas/Contagens de Notas Fiscais (Almox projetos)">Requisição Baixadas/Contagens de Notas Fiscais…</span><span class="gestor-nome">João Pio</span></td>
-      <td><span class="prazo-badge">Almoxarifado</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">1° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">9</td>
-      <td><span class="processo-nome" title="Requisição Baixadas/Contagens de Notas Fiscais (Almox Operação)">Requisição Baixadas/Contagens de Notas Fiscais…</span><span class="gestor-nome">João Pio</span></td>
-      <td><span class="prazo-badge">Almoxarifado</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">1° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">10</td>
-      <td><span class="processo-nome" title="Provisão de Royalties">Provisão de Royalties</span><span class="gestor-nome">Luciane Alencar</span></td>
-      <td><span class="prazo-badge">Processos Industriais</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">1° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill na">— N/A</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">11</td>
-      <td><span class="processo-nome" title="Painel NF-e finalizadas sem O.C">Painel NF-e finalizadas sem O.C</span><span class="gestor-nome">Jackson Silva</span></td>
-      <td><span class="prazo-badge">Comercial MTP</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">1° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">12</td>
-      <td><span class="processo-nome" title="Painel CT-e MP">Painel CT-e MP</span><span class="gestor-nome">Jackson Silva</span></td>
-      <td><span class="prazo-badge">Comercial MTP</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">1° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">13</td>
-      <td><span class="processo-nome" title="Painel NF-e MP">Painel NF-e MP</span><span class="gestor-nome">Jackson Silva</span></td>
-      <td><span class="prazo-badge">Comercial MTP</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">1° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">14</td>
-      <td><span class="processo-nome" title="Painel NFS-e FRETE">Painel NFS-e FRETE</span><span class="gestor-nome">Eduardo Boldarini</span></td>
-      <td><span class="prazo-badge">Fiscal</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">1° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">15</td>
-      <td><span class="processo-nome" title="Depreciação">Depreciação</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">1° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">16</td>
-      <td><span class="processo-nome" title="Canceladas/escrituradas">Canceladas/escrituradas</span><span class="gestor-nome">Eduardo Boldarini</span></td>
-      <td><span class="prazo-badge">Fiscal</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">1° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">17</td>
-      <td><span class="processo-nome" title="Integrações saídas painel 851">Integrações saídas painel 851</span><span class="gestor-nome">Everton Ramos</span></td>
-      <td><span class="prazo-badge">Faturamento</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">Todo dia 1</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">18</td>
-      <td><span class="processo-nome" title="Biomassa sem cubagem">Biomassa sem cubagem</span><span class="gestor-nome">Everton Ramos</span></td>
-      <td><span class="prazo-badge">Faturamento</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">Todo dia 1</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill na">— N/A</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">19</td>
-      <td><span class="processo-nome" title="Pré-entrada/pesagens sem integração">Pré-entrada/pesagens sem integração</span><span class="gestor-nome">Everton Ramos</span></td>
-      <td><span class="prazo-badge">Faturamento</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">Todo dia 1</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill na">— N/A</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">20</td>
-      <td><span class="processo-nome" title="Ordem de retirada em aberto">Ordem de retirada em aberto</span><span class="gestor-nome">Everton Ramos</span></td>
-      <td><span class="prazo-badge">Faturamento</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">Todo dia 1</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill na">— N/A</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">21</td>
-      <td><span class="processo-nome" title="Painel de emissão NF-e(sequencia)">Painel de emissão NF-e(sequencia)</span><span class="gestor-nome">Everton Ramos</span></td>
-      <td><span class="prazo-badge">Faturamento</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">Todo dia 1</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">22</td>
-      <td><span class="processo-nome" title="Painel NF-e e CT-e - Óleo">Painel NF-e e CT-e - Óleo</span><span class="gestor-nome">Everton Ramos</span></td>
-      <td><span class="prazo-badge">Faturamento</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">Todo dia 1</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill na">— N/A</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">23</td>
-      <td><span class="processo-nome" title="Confirmação de entrada">Confirmação de entrada</span><span class="gestor-nome">Everton Ramos</span></td>
-      <td><span class="prazo-badge">Faturamento</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">Todo dia 1</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill na">— N/A</span></td><td><span class="pill na">— N/A</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">24</td>
-      <td><span class="processo-nome" title="Conferência Contabilização da Folha de pagamento">Conferência Contabilização da Folha de pagamento</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">2° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">02/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">25</td>
-      <td><span class="processo-nome" title="Fechamento de contratos de biomassa">Fechamento de contratos de biomassa</span><span class="gestor-nome">Jackson Silva</span></td>
-      <td><span class="prazo-badge">Comercial MTP</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">2° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">02/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">26</td>
-      <td><span class="processo-nome" title="Fechamento contratos de milho">Fechamento contratos de milho</span><span class="gestor-nome">Jackson Silva</span></td>
-      <td><span class="prazo-badge">Comercial MTP</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">2° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">02/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">27</td>
-      <td><span class="processo-nome" title="Complemento provisão de milho (volume e valor)">Complemento provisão de milho (volume e valor)</span><span class="gestor-nome">Jackson Silva</span></td>
-      <td><span class="prazo-badge">Comercial MTP</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">2° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">02/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">28</td>
-      <td><span class="processo-nome" title="Contingências processos fiscais">Contingências processos fiscais</span><span class="gestor-nome">Andressa Schmidt</span></td>
-      <td><span class="prazo-badge">Juridico</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">2° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">02/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">29</td>
-      <td><span class="processo-nome" title="Provisões Cíveis e trabalhistas">Provisões Cíveis e trabalhistas</span><span class="gestor-nome">Andressa Schmidt</span></td>
-      <td><span class="prazo-badge">Juridico</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">2° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">02/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">30</td>
-      <td><span class="processo-nome" title="Provisão de depreciação nas unidades em obras">Provisão de depreciação nas unidades em obras</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">2° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">02/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">31</td>
-      <td><span class="processo-nome" title="MtM dos Instrumentos Financeiros Derivativos">MtM dos Instrumentos Financeiros Derivativos</span><span class="gestor-nome">Carlos Araujo</span></td>
-      <td><span class="prazo-badge">Financeiro</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">2° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">01/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">32</td>
-      <td><span class="processo-nome" title="Receitas Financeiras">Receitas Financeiras</span><span class="gestor-nome">Carlos Araujo</span></td>
-      <td><span class="prazo-badge">Financeiro</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">2° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">02/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">33</td>
-      <td><span class="processo-nome" title="Operações financeiras e despesas financeiras">Operações financeiras e despesas financeiras</span><span class="gestor-nome">Carlos Araujo</span></td>
-      <td><span class="prazo-badge">Financeiro</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">2° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">02/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">34</td>
-      <td><span class="processo-nome" title="Mapa de Empréstimos">Mapa de Empréstimos</span><span class="gestor-nome">Carlos Araujo</span></td>
-      <td><span class="prazo-badge">Financeiro</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">2° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">02/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">35</td>
-      <td><span class="processo-nome" title="Ativo biológico">Ativo biológico</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">2° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">02/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">36</td>
-      <td><span class="processo-nome" title="Geração parcela ISSQN - até 2° dia útil">Geração parcela ISSQN - até 2° dia útil</span><span class="gestor-nome">Romulo Macedo</span></td>
-      <td><span class="prazo-badge">Fiscal</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">2° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">02/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">37</td>
-      <td><span class="processo-nome" title="Conciliações bancárias">Conciliações bancárias</span><span class="gestor-nome">Carlos Araujo</span></td>
-      <td><span class="prazo-badge">Financeiro</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">02/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">38</td>
-      <td><span class="processo-nome" title="Conciliação contas a receber">Conciliação contas a receber</span><span class="gestor-nome">Carlos Araujo</span></td>
-      <td><span class="prazo-badge">Financeiro</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">02/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">39</td>
-      <td><span class="processo-nome" title="Conciliação contas a pagar">Conciliação contas a pagar</span><span class="gestor-nome">Carlos Araujo</span></td>
-      <td><span class="prazo-badge">Financeiro</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">02/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">40</td>
-      <td><span class="processo-nome" title="Variação Cambial">Variação Cambial</span><span class="gestor-nome">Carlos Araujo</span></td>
-      <td><span class="prazo-badge">Financeiro</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-warn" style="font-size:12px;white-space:nowrap">02/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">41</td>
-      <td><span class="processo-nome" title="Apuração de Reembolso de ICMS - Opla e Tercom">Apuração de Reembolso de ICMS - Opla e Tercom</span><span class="gestor-nome">Romulo Macedo</span></td>
-      <td><span class="prazo-badge">Fiscal</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">03/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">42</td>
-      <td><span class="processo-nome" title="Apuração das subvenções de ICMS por produto">Apuração das subvenções de ICMS por produto</span><span class="gestor-nome">Romulo Macedo</span></td>
-      <td><span class="prazo-badge">Fiscal</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">03/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">43</td>
-      <td><span class="processo-nome" title="Apuração ICMS, Difal e IPI">Apuração ICMS, Difal e IPI</span><span class="gestor-nome">Romulo Macedo</span></td>
-      <td><span class="prazo-badge">Fiscal</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">03/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">44</td>
-      <td><span class="processo-nome" title="Conciliação e fechamento do ativo">Conciliação e fechamento do ativo</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">03/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">45</td>
-      <td><span class="processo-nome" title="Apuração PIS/COFINS">Apuração PIS/COFINS</span><span class="gestor-nome">Eduardo Boldarini</span></td>
-      <td><span class="prazo-badge">Fiscal</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">03/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">46</td>
-      <td><span class="processo-nome" title="Contabilização das contingências">Contabilização das contingências</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">03/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">47</td>
-      <td><span class="processo-nome" title="Relação de venda de energia - Quantidade e valor">Relação de venda de energia - Quantidade e valor</span><span class="gestor-nome">Mayra Silva</span></td>
-      <td><span class="prazo-badge">Gestão Energia</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">03/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">48</td>
-      <td><span class="processo-nome" title="Relação de faturas de energia para provisão">Relação de faturas de energia para provisão</span><span class="gestor-nome">Mayra Silva</span></td>
-      <td><span class="prazo-badge">Gestão Energia</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">03/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">49</td>
-      <td><span class="processo-nome" title="Provisão de NF não registradas na competência (OPEX/CAPEX)">Provisão de NF não registradas na competência …</span><span class="gestor-nome">Eduardo Boldarini</span></td>
-      <td><span class="prazo-badge">Fiscal</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">03/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">50</td>
-      <td><span class="processo-nome" title="Encontro de Contas ISSQN Incentivado - até 3º dia útil">Encontro de Contas ISSQN Incentivado - até 3º …</span><span class="gestor-nome">Carlos Araujo</span></td>
-      <td><span class="prazo-badge">Financeiro</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">03/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">51</td>
-      <td><span class="processo-nome" title="Fechamento I-simp">Fechamento I-simp</span><span class="gestor-nome">Natiela Nicolodi</span></td>
-      <td><span class="prazo-badge">Indicadores</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">03/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">52</td>
-      <td><span class="processo-nome" title="Provisão receita venda energia - até 3º dia útil">Provisão receita venda energia - até 3º dia útil</span><span class="gestor-nome">Eduardo Boldarini</span></td>
-      <td><span class="prazo-badge">Fiscal</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">03/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">53</td>
-      <td><span class="processo-nome" title="Reclassificação almoxarifado para imobilizado - até 3º dia útil">Reclassificação almoxarifado para imobilizado …</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">03/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">54</td>
-      <td><span class="processo-nome" title="Conferência empréstimos">Conferência empréstimos</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">03/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">55</td>
-      <td><span class="processo-nome" title="Contabilização SWAP">Contabilização SWAP</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">03/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">56</td>
-      <td><span class="processo-nome" title="Capitalização de juros - CPC 20">Capitalização de juros - CPC 20</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">03/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">57</td>
-      <td><span class="processo-nome" title="AVP caminhões e vagões">AVP caminhões e vagões</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">3° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">03/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">58</td>
-      <td><span class="processo-nome" title="Reclassificação compra entrega futura para imobilizado">Reclassificação compra entrega futura para imo…</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">4° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">06/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">59</td>
-      <td><span class="processo-nome" title="AVP clientes">AVP clientes</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">4° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">06/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">60</td>
-      <td><span class="processo-nome" title="AVP fornecedores">AVP fornecedores</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">4° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">06/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">61</td>
-      <td><span class="processo-nome" title="Provisões - PCLD">Provisões - PCLD</span><span class="gestor-nome">Vitor Gonzalez</span></td>
-      <td><span class="prazo-badge">Crédito e Cobrança</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">4° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">06/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">62</td>
-      <td><span class="processo-nome" title="Encontro de Contas - Faturamento Antecipado x Clientes">Encontro de Contas - Faturamento Antecipado x …</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">4° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">06/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">63</td>
-      <td><span class="processo-nome" title="Encontro de contas: adiantamento fornecedores">Encontro de contas: adiantamento fornecedores</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">4° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">06/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">64</td>
-      <td><span class="processo-nome" title="Reclassificação Adiantamento a Fornecedor para Imobilizado">Reclassificação Adiantamento a Fornecedor para…</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">4° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">06/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">65</td>
-      <td><span class="processo-nome" title="Reclassificação da conta subvenção 6.1.1.03.006 e 6.1.1.03.007">Reclassificação da conta subvenção 6.1.1.03.00…</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">4º dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">06/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">66</td>
-      <td><span class="processo-nome" title="Ressarcimento Anidro ICMS - Balsas">Ressarcimento Anidro ICMS - Balsas</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">4º dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">06/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">67</td>
-      <td><span class="processo-nome" title="Contabilização CBIOS">Contabilização CBIOS</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">4º dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">06/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">68</td>
-      <td><span class="processo-nome" title="Equivalência Patrimonial">Equivalência Patrimonial</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">4º dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">06/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">69</td>
-      <td><span class="processo-nome" title="Fechamento Custo - até 4º dia útil">Fechamento Custo - até 4º dia útil</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Custos</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">4º dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">06/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">70</td>
-      <td><span class="processo-nome" title="Encerramento conciliações contábeis para apuração IR/CS">Encerramento conciliações contábeis para apura…</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">5° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">07/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">71</td>
-      <td><span class="processo-nome" title="Encerramento do período">Encerramento do período</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">5° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">07/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">72</td>
-      <td><span class="processo-nome" title="Apuração LALUR - IR/CS correntes e diferidos (fiscal/contábil)">Apuração LALUR - IR/CS correntes e diferidos (…</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Fiscal</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">5° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">07/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">73</td>
-      <td><span class="processo-nome" title="Constituição de reservas">Constituição de reservas</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">6° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">08/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">74</td>
-      <td><span class="processo-nome" title="Finalização conferências e formalização do encerramento e envio BP e DRE Societários">Finalização conferências e formalização do enc…</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">6° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">08/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr><tr>
-      <td style="color:#888780;font-size:11px">75</td>
-      <td><span class="processo-nome" title="Encerramento das entregas das conciliações contábeis">Encerramento das entregas das conciliações con…</span><span class="gestor-nome">Guilherme França</span></td>
-      <td><span class="prazo-badge">Contabilidade</span></td>
-      <td style="font-size:11px;color:#52514e;white-space:nowrap">6° dia útil</td>
-      <td class="deadline-ok" style="font-size:12px;white-space:nowrap">08/07/2026</td>
-      <td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td><td><span class="pill nao-iniciado">○ Não iniciado</span></td>
-    </tr></tbody>
+        <thead id="tblHead"></thead>
+        <tbody id="tblBody"></tbody>
       </table>
     </div>
   </div>
 
   <div id="tab-areas" class="section">
-    <div id="areasContent"><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:20px">📒</span>Contabilidade</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>260 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">26 processos · 260 entregas</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:20px">🧾</span>Fiscal</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>130 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">13 processos · 130 entregas</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:20px">💰</span>Financeiro</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>90 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">9 processos · 90 entregas</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:20px">💼</span>Comercial MTP</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>57 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">6 processos · 57 entregas</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:20px">🧮</span>Faturamento</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>46 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">7 processos · 46 entregas</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:20px">⚖️</span>Juridico</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>20 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">2 processos · 20 entregas</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:20px">⚡</span>Gestão Energia</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>20 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">2 processos · 20 entregas</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:20px">📦</span>Almoxarifado</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>18 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">2 processos · 18 entregas</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:20px">📈</span>Indicadores</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>17 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">2 processos · 17 entregas</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:20px">👥</span>RH</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>10 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">1 processos · 10 entregas</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:20px">💳</span>Crédito e Cobrança</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>10 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">1 processos · 10 entregas</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:20px">📊</span>Custos</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>10 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">1 processos · 10 entregas</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:20px">🔧</span>Manutenção</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>9 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">1 processos · 9 entregas</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:20px">🚗</span>Automotivo</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>7 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">1 processos · 7 entregas</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:20px">⚙️</span>Processos Industriais</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>7 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">1 processos · 7 entregas</span>
-      </div>
-    </div></div>
+    <div id="areasContent"></div>
   </div>
 
   <div id="tab-unidades" class="section">
-    <div id="unidadesContent"><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:18px">🏭</span>Sinop/MT</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>75 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">75 entregas aplicáveis</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:18px">🏭</span>Nova Mutum/MT</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>75 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">75 entregas aplicáveis</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:18px">🏭</span>Dourados/MS</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>74 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">74 entregas aplicáveis</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:18px">🏭</span>Fueling 1-1-4</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>74 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">74 entregas aplicáveis</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:18px">🏭</span>Sidrolândia/MS</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>73 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">73 entregas aplicáveis</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:18px">🏭</span>Balsas/MA</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>73 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">73 entregas aplicáveis</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:18px">🏭</span>Luís Eduardo/BA</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>73 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">73 entregas aplicáveis</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:18px">🏭</span>Rio Verde/GO</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>67 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">67 entregas aplicáveis</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:18px">🏭</span>Rondonópolis/MT</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>67 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">67 entregas aplicáveis</span>
-      </div>
-    </div><div class="area-card" style="">
-      <h3>
-        <div class="area-left"><span style="font-size:18px">🏭</span>São Paulo/SP</div>
-        <span class="pct-badge danger">0% concluído</span>
-      </h3>
-      <div class="area-bar-wrap">
-        <div class="seg" style="width:0.0%;background:#e24b4a"></div>
-        <div class="seg" style="width:100.0%;background:#f09595"></div>
-        <div class="seg" style="width:0.0%;background:#eda100"></div>
-        <div class="seg" style="width:0.0%;background:#639922"></div>
-        <div class="seg" style="flex:1;background:#f1efe8"></div>
-      </div>
-      <div class="area-stats">
-        
-        <span>60 não iniciados</span>
-        
-        <span style="color:#27500a">✓ 0 concluídos</span>
-        <span style="color:#888780">60 entregas aplicáveis</span>
-      </div>
-    </div></div>
+    <div id="unidadesContent"></div>
   </div>
 </div>
 
-<div id="noFile" style="text-align: center; padding: 4rem 1rem; color: rgb(136, 135, 128); display: none;">
+<div id="noFile" style="text-align:center;padding:4rem 1rem;color:#888780">
   <div style="font-size:48px;margin-bottom:1rem">📋</div>
   <p style="font-size:15px;font-weight:500;color:#52514e;margin-bottom:.5rem">Nenhum arquivo carregado</p>
   <p style="font-size:13px">Clique em "Selecionar arquivo .xlsx" para carregar o cronograma</p>
@@ -1307,6 +256,7 @@ function parseExcel(file){
   const reader=new FileReader();
   reader.onload=e=>{
     try{
+      if(typeof XLSX==='undefined'){alert('Erro: a biblioteca de leitura do Excel não carregou. Verifique sua conexão com a internet e recarregue a página.');return;}
       const wb=XLSX.read(e.target.result,{type:'array',cellDates:true});
       const ws=wb.Sheets[wb.SheetNames[0]];
       const raw=XLSX.utils.sheet_to_json(ws,{header:1,defval:null});
@@ -1410,26 +360,33 @@ function renderCharts(data){
   const pct=total?Math.round(concl/total*100):0;
   document.getElementById('donutPct').textContent=pct+'%';
 
-  const ctx=document.getElementById('statusDonut').getContext('2d');
-  const chartData={
-    labels:['Em atraso','Não iniciado','Em andamento','Concluído'],
-    datasets:[{data:[atras,naoIniciado,andamento,concl],backgroundColor:['#e24b4a','#f09595','#eda100','#639922'],borderWidth:2,borderColor:'#ffffff'}]
-  };
-  if(donutChartInstance){donutChartInstance.data=chartData;donutChartInstance.update();}
-  else{
-    donutChartInstance=new Chart(ctx,{
-      type:'doughnut',
-      data:chartData,
-      options:{cutout:'72%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.label+': '+c.raw+' ('+(total?Math.round(c.raw/total*100):0)+'%)'}}},animation:{duration:400}}
-    });
+  if(typeof Chart==='undefined'){
+    document.getElementById('donutLegend').innerHTML='<p style="font-size:11px;color:#a32d2d">Gráfico indisponível (biblioteca não carregou). Verifique sua conexão.</p>';
+  }else{
+    try{
+      const ctx=document.getElementById('statusDonut').getContext('2d');
+      const chartData={
+        labels:['Em atraso','Não iniciado','Em andamento','Concluído'],
+        datasets:[{data:[atras,naoIniciado,andamento,concl],backgroundColor:['#e24b4a','#f09595','#eda100','#639922'],borderWidth:2,borderColor:'#ffffff'}]
+      };
+      if(donutChartInstance){donutChartInstance.data=chartData;donutChartInstance.update();}
+      else{
+        donutChartInstance=new Chart(ctx,{
+          type:'doughnut',
+          data:chartData,
+          options:{cutout:'72%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.label+': '+c.raw+' ('+(total?Math.round(c.raw/total*100):0)+'%)'}}},animation:{duration:400}}
+        });
+      }
+      document.getElementById('donutLegend').innerHTML=`
+        <div class="chart-legend-item"><div class="left"><span class="dot2" style="background:#e24b4a"></span>Em atraso</div><span class="count">${atras}</span></div>
+        <div class="chart-legend-item"><div class="left"><span class="dot2" style="background:#f09595"></span>Não iniciado</div><span class="count">${naoIniciado}</span></div>
+        <div class="chart-legend-item"><div class="left"><span class="dot2" style="background:#eda100"></span>Em andamento</div><span class="count">${andamento}</span></div>
+        <div class="chart-legend-item"><div class="left"><span class="dot2" style="background:#639922"></span>Concluído</div><span class="count">${concl}</span></div>
+      `;
+    }catch(err){
+      console.error('Erro ao renderizar gráfico donut:',err);
+    }
   }
-
-  document.getElementById('donutLegend').innerHTML=`
-    <div class="chart-legend-item"><div class="left"><span class="dot2" style="background:#e24b4a"></span>Em atraso</div><span class="count">${atras}</span></div>
-    <div class="chart-legend-item"><div class="left"><span class="dot2" style="background:#f09595"></span>Não iniciado</div><span class="count">${naoIniciado}</span></div>
-    <div class="chart-legend-item"><div class="left"><span class="dot2" style="background:#eda100"></span>Em andamento</div><span class="count">${andamento}</span></div>
-    <div class="chart-legend-item"><div class="left"><span class="dot2" style="background:#639922"></span>Concluído</div><span class="count">${concl}</span></div>
-  `;
 
   // Bar chart: pendências por área (atras + naoIniciado)
   const areaMap={};
@@ -1460,7 +417,15 @@ function renderCharts(data){
 
 function renderAll(){
   const data=getFilteredData();
-  renderKPIs(data);renderCharts(data);renderProcessos(data);renderAreas(data);renderUnidades(data);
+  safeRun(()=>renderKPIs(data),'renderKPIs');
+  safeRun(()=>renderCharts(data),'renderCharts');
+  safeRun(()=>renderProcessos(data),'renderProcessos');
+  safeRun(()=>renderAreas(data),'renderAreas');
+  safeRun(()=>renderUnidades(data),'renderUnidades');
+}
+
+function safeRun(fn,label){
+  try{fn();}catch(err){console.error('Erro em '+label+':',err);}
 }
 
 function renderKPIs(data){
@@ -1589,6 +554,5 @@ document.getElementById('xlsxUpload').addEventListener('change',e=>{
   if(e.target.files[0])parseExcel(e.target.files[0]);
 });
 </script>
-
-
-</body></html>
+</body>
+</html>
